@@ -17,6 +17,15 @@ services:
       - WEBHOOK_URL=${WEBHOOK_URL:-http://localhost:5678/}
       - N8N_TRUST_PROXY=true
 
+
+      - N8N_RUNNERS_ENABLED=true
+      - N8N_GIT_NODE_DISABLE_BARE_REPOS=true
+      # если надо доступ к env из Code node — оставь false, иначе можешь убрать и принять будущий default
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
+
+      # чтобы убрать warning по правам на config
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      
       # DB
       - DB_TYPE=postgresdb
       - DB_POSTGRESDB_HOST=postgres
