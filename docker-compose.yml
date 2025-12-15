@@ -10,13 +10,12 @@ services:
       - NODE_ENV=production
       - N8N_PORT=5678
       - N8N_USER_FOLDER=/home/nodeuser/.n8n
-
-      - N8N_HOST=${N8N_HOST:-localhost}
-      - N8N_PROTOCOL=${N8N_PROTOCOL:-http}
-      - N8N_EDITOR_BASE_URL=${N8N_EDITOR_BASE_URL:-http://localhost:5678}
-      - WEBHOOK_URL=${WEBHOOK_URL:-http://localhost:5678/}
+      
+      - N8N_HOST=${N8N_HOST}
+      - N8N_PROTOCOL=${N8N_PROTOCOL}
+      - N8N_EDITOR_BASE_URL=${N8N_EDITOR_BASE_URL}
+      - WEBHOOK_URL=${WEBHOOK_URL}
       - N8N_TRUST_PROXY=true
-
 
       - N8N_RUNNERS_ENABLED=true
       - N8N_GIT_NODE_DISABLE_BARE_REPOS=true
