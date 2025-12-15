@@ -20,3 +20,9 @@ docker/**/Dockerfile
 .vscode
 packages/testing
 cypress
+# === PNPM workspace MUST-HAVES ===
+!pnpm-workspace.yaml
+!packages/**/package.json
+!packages/**/tsconfig.json
+!packages/**/src/**
+!patches/**
