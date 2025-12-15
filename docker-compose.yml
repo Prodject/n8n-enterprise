@@ -24,6 +24,14 @@ services:
       #- N8N_ENCRYPTION_KEY=change_me_to_a_long_random_string
     volumes:
       - n8n_user_data:/home/nodeuser/.n8n
+      # Скан работы
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"fetch('http://127.0.0.1:5678/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\""]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 60s
+      
     depends_on:
       - postgres
 
@@ -35,7 +43,12 @@ services:
       POSTGRES_PASSWORD: n8n
     volumes:
       - pg_data:/var/lib/postgresql/data
-
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U n8n -d n8n"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
 volumes:
   n8n_user_data:
   pg_data:
